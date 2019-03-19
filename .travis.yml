@@ -1,0 +1,19 @@
+language: java
+jdk:
+- oraclejdk8
+# would just use default install/script but the ./mvnw script errors on travis
+# obviously this only works for maven builds right now...
+install:
+- mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+script:
+- mvn clean install
+cache:
+  directories:
+  - $HOME/.m2
+
+deploy:
+provider: heroku
+    api_key:
+      secure: "1c65c462-4123-46e3-b689-a16fb8f6e1bd"
+    on:
+      branch: master
